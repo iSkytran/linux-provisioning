@@ -15,7 +15,13 @@ fc-cache
 
 # Download i3 dotfiles
 curl -L https://raw.githubusercontent.com/iSkytran/dotfiles/master/.config/i3/config -o ~/.config/i3/config --create-dirs
-curl -L https://
+curl -L https://raw.githubusercontent.com/iSkytran/dotfiles/master/.config/i3status/config -o ~/.config/i3status/config --create-dirs
+
+# Download rofi config and .Xresources
+curl -L https://raw.githubusercontent.com/iSkytran/dotfiles/master/.config/rofi/config.rasi -o ~/.config/rofi/config.rasi --create-dirs
+curl -L https://raw.githubusercontent.com/iSkytran/dotfiles/master/.config/rofi/myrofitheme.rasi -o ~/.config/rofi/myrofitheme.rasi --create-dirs
+curl -L https://raw.githubusercontent.com/iSkytran/dotfiles/master/.Xresources -o ~/.Xresources
+xrdb ~/.Xresources
 
 # Generate ssh files
 printf "Generating ssh files..."
