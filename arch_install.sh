@@ -143,7 +143,7 @@ done
 yay -S keepassxc visual-studio-code-bin google-chrome dropbox
 
 # Install i3 and related software
-yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh rxvt-unicode ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet
+yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet
 printf "exec i3" >> /etc/X11/xinit/xinitrc
 
 # Download post install script
