@@ -32,7 +32,7 @@ yay -Syu
 
 # Install graphics driver
 graphics_type=""
-while (graphics_type == "")
+while ($graphics_type == "")
 do
     printf "Choose graphics driver (intel, amd, nvidia): "
     read graphics_type
