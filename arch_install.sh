@@ -37,11 +37,11 @@ mount ${drive_name}1 /mnt/boot/efi
 pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
 # Download part 2 of install
-curl -Lo /mnt/arch_install_2.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_install_2.sh
+curl -Lo /mnt/root/arch_install_2.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_install_2.sh
 
 # Generate fstab and enter mounted disk as root
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt ./arch_install_2.sh
+arch-chroot /mnt /bin/sh /root/arch_install_2.sh
 
 # Clean up part 2
-rm /mnt/arch_install_2.sh
+rm /mnt/root/arch_install_2.sh
