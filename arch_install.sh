@@ -49,4 +49,4 @@ arch-chroot /mnt /bin/sh /root/arch_install_2.sh
 rm /mnt/root/arch_install_2.sh
 
 # Next instructions
-printf "Please reboot the computer now and run sudo ~/arch_post_install.sh after rebooting."
+printf "Please reboot the computer now and run sudo ~/arch_post_install.sh after rebooting.\n"

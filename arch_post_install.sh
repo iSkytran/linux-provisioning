@@ -24,10 +24,10 @@ done
 
 # Firewall setup
 systemctl enable --now ufw.service
-ufw default deny
-ufw allow from 192.168.0.0/24
-ufw limit ssh
-ufw enable
+sudo ufw default deny
+sudo ufw allow from 192.168.0.0/24
+sudo ufw limit ssh
+sudo ufw enable
 
 # Docker setup
 systemctl enable --now docker.service
@@ -35,10 +35,10 @@ systemctl enable --now docker.service
 # Install yay package manager
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
+makepkg -sric --noconfirm
 cd ..
-rm -r yay
-sed -i '/Color/s/^#//g' /etc/pacman.conf
+rm -rf yay
+sudo sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Upgrade system to make sure everything is up to date
 yay -Syu
@@ -60,7 +60,7 @@ do
         yay -S nvidia --noconfirm
         ;;
     *)
-        printf "Invalid selection."
+        printf "Invalid selection.\n"
         graphics_type=""
         ;;
     esac
@@ -72,7 +72,8 @@ yay -S vim-lightline-git vim-rainbow-parentheses-improved --noconfirm
 
 # Install i3 and related software
 yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet --noconfirm
-printf "exec i3" >> /etc/X11/xinit/xinitrc
+touch ~/.xinitrc
+printf "exec i3" >> ~/.xinitrc
 
 #Configure zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -106,4 +107,4 @@ ssh-keygen -t rsa -b 4096
 printf "Restart the computer to finish. Run nmtui to connect to internet. \
 Sign into Google Chrome, VS Code, and Dropbox to sync preferences. \
 Copy KeePass key file to computer and copy contents of public ssh key to GitHub.\
-arch_post_install.sh can now be removed."
+arch_post_install.sh can now be removed.\n"

@@ -45,7 +45,7 @@ do
         break
         ;;
     *)
-        printf "Invalid selection."
+        printf "Invalid selection.\n"
         microcode_type=""
         ;;
     esac
