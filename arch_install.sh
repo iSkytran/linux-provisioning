@@ -29,12 +29,14 @@ pacman -Syy
 pacman -S reflector --noconfirm
 reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
-# Install the system
+# Install the system and enable swap
 mount ${drive_name}3 /mnt
 swapon ${drive_name}2
+pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
+
+# Mount efi partition
 mkdir /mnt/boot/efi
 mount ${drive_name}1 /mnt/boot/efi
-pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
 # Download part 2 of install
 curl -Lo /mnt/root/arch_install_2.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_install_2.sh
@@ -45,3 +47,6 @@ arch-chroot /mnt /bin/sh /root/arch_install_2.sh
 
 # Clean up part 2
 rm /mnt/root/arch_install_2.sh
+
+# Next instructions
+printf "Please reboot the computer now and run sudo ~/arch_post_install.sh after rebooting."
