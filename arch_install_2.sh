@@ -25,7 +25,7 @@ passwd
 
 # Install bootloader
 microcode_type=""
-while ($microcode_type == "")
+while [[ $microcode_type == "" ]]
 do
     printf "Choose microcode updates (intel, amd, none): "
     read microcode_type
