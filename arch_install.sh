@@ -43,7 +43,7 @@ cat <<
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Part 2 of installation
-cat <<EOF > /mnt/root/arch_install_2.sh
+cat <<\EOF >> /mnt/root/arch_install_2.sh
 #!/bin/bash
 
 # Set time zone
