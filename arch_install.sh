@@ -11,11 +11,11 @@ done
 timedatectl set-ntp true
 
 # Prompt user for partitions
-printf ("Make 3 disk partitions, a 512M EFI System on /dev/sdX1, "
-   "a 2G linux swap on /dev/sdX2, "
-   "and a Linux filesystem using the rest of the disk on /dev/sdX3.\n"
-   "Make note of the drive name (e.g. /dev/sda)"
-   "Press enter to continue...")
+printf "Make 3 disk partitions, a 512M EFI System on /dev/sdX1, \
+   a linux swap 50% the size of computer's ram on /dev/sdX2, \
+   and a Linux filesystem using the rest of the disk on /dev/sdX3.\n\
+   Make note of the drive name (e.g. /dev/sda)\
+   Press enter to continue..."
 read
 cfdisk
 read -p "Ender the drive name (default: /dev/sda): " drive_name
@@ -51,9 +51,9 @@ printf "LANG=en_US.UTF-8" >> /etc/locale.conf
 # Network configuration
 read -p "Enter the hostname of the computer: " host_name
 touch /etc/hosts
-printf ("127.0.0.1\tlocalhost\n"
-    "::1\tlocalhost\n127.0.1.1\t"
-    "${host_name}.localdomain\t${host_name}") >> /etc/hosts
+printf "127.0.0.1\tlocalhost\n\
+    ::1\tlocalhost\n127.0.1.1\t\
+    ${host_name}.localdomain\t${host_name}" >> /etc/hosts
 printf $host_name >> /etc/hostname
 systemctl enable NetworkManager.service
 
