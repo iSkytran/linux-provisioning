@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set drive name var
-drive_name=$1
-
 # Set time zone
 read -p "Enter the time zone (default: America/New_York): " time_zone
 time_zone=${time_zone:-"America/New_York"}
@@ -59,9 +56,6 @@ do
         ;;
     esac
 done
-pacman -S grub efibootmgr --noconfirm
-mkdir /boot/efi
-mount ${drive_name}1 /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 

@@ -32,7 +32,9 @@ reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 # Install the system
 mount ${drive_name}3 /mnt
 swapon ${drive_name}2
-pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
+mkdir /mnt/boot/efi
+mount ${drive_name}1 /mnt/boot/efi
+pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
 # Download part 2 of install
 curl -Lo /mnt/root/arch_install_2.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_install_2.sh
@@ -42,4 +44,4 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt /mnt/root/arch_install_2.sh
 
 # Clean up part 2
-rm /mnt/root/arch_install_2.sh $drive_name
+rm /mnt/root/arch_install_2.sh
