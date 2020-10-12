@@ -8,12 +8,12 @@ Use at your own risk.
 
 ```shell
 curl -Lo ~/arch_install.sh https://git.io/JTkbw
-. arch_install.sh
+sh arch_install.sh
 ```
 
 ## Ubuntu Post Install Script Usage
 
 ```shell
 curl -Lo ~/ubuntu_post_install.sh https://git.io/JTLTu
-. ubuntu_post_install.sh
+sh ubuntu_post_install.sh
 ```
