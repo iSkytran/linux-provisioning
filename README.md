@@ -14,7 +14,7 @@ sh arch_install.sh
 After rebooting, run
 
 ```shell
-sudo arch_post_install.sh
+sudo sh arch_post_install.sh
 rm arch_post_install.sh
 ```
 

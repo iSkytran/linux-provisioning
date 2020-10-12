@@ -7,7 +7,20 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # Enable Network Manager
-systemctl enable NetworkManager.service
+systemctl enable --now NetworkManager.service
+
+# Connect to internet
+printf "To proceed, internet must be connected. Please configure. \
+Press enter to continue..."
+read
+nmtui
+
+# Checks for internet
+while ! ping -q -c 1 -W 1 8.8.8.8 >> /dev/null
+do
+    printf "Waiting for internet..."
+    sleep 1
+done
 
 # Firewall setup
 systemctl enable --now ufw.service

@@ -22,6 +22,11 @@ printf $host_name >> /etc/hostname
 #Set root password
 printf "Set root password...\n"
 passwd
+while [[ $? -ne 0 ]]
+do
+    printf "Password set unsuccessfully. Try again.\n"
+    passwd
+done
 
 # Install bootloader
 microcode_type=""
@@ -53,6 +58,11 @@ read -p "Adding default user, enter username: " user_name
 useradd -m -G wheel -s /usr/bin/zsh $user_name
 printf "Set user password...\n"
 passwd $user_name
+while [[ $? -ne 0 ]]
+do
+    printf "Password set unsuccessfully. Try again.\n"
+    passwd $user_name
+done
 
 # Allow sudo for group wheel
 sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
