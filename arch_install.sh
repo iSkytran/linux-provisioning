@@ -30,7 +30,7 @@ pacman -S reflector
 reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 # Install the system
-mount /dev/sda3 /mnt
+mount ${drive_name}3 /mnt
 pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
 # Generate fstab and enter mounted disk as root
@@ -141,13 +141,14 @@ done
 
 # Install user software
 yay -S keepassxc visual-studio-code-bin google-chrome dropbox
+yay -S vim-lightline-git vim-rainbow-parentheses-improved
 
 # Install i3 and related software
 yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet
 printf "exec i3" >> /etc/X11/xinit/xinitrc
 
 # Download post install script
-curl -L https://raw.githubusercontent.com/iSkytran/linux-install-scripts -o /home/${user_name}/arch_post_install.sh
+curl -Lo /home/${user_name}/arch_post_install.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_post_install.sh
 chmod a+x /home/${user_name}/arch_post_install.sh
 
 # Switch to default user
