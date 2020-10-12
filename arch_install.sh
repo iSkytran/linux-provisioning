@@ -12,10 +12,10 @@ timedatectl set-ntp true
 
 # Prompt user for partitions
 printf "Make 3 disk partitions, a 512M EFI System on /dev/sdX1, \
-   a linux swap 50% the size of computer's ram on /dev/sdX2, \
-   and a Linux filesystem using the rest of the disk on /dev/sdX3.\n\
-   Make note of the drive name (e.g. /dev/sda)\
-   Press enter to continue..."
+a linux swap 50% the size of computer's ram on /dev/sdX2, \
+and a Linux filesystem using the rest of the disk on /dev/sdX3.\n\
+Make note of the drive name (e.g. /dev/sda)\n\
+Press enter to continue..."
 read
 cfdisk
 read -p "Ender the drive name (default: /dev/sda): " drive_name
@@ -26,11 +26,14 @@ mkfs.ext4 ${drive_name}3
 
 # Set mirror
 pacman -Syy
-pacman -S reflector
+pacman -S reflector --noconfirm
 reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 # Install the system
+mkdir /mnt/efi
 mount ${drive_name}3 /mnt
+swapon ${drive_name}2
+mount ${drive_name}1 /mnt/efi
 pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
 # Generate fstab and enter mounted disk as root
@@ -68,7 +71,7 @@ ufw enable
 systemctl enable --now docker.service
 
 #Set root password
-printf "Set root password..."
+printf "Set root password...\n"
 passwd
 
 # Install bootloader
@@ -79,10 +82,10 @@ do
     read microcode_type
     case $microcode_type in
     "intel")
-        pacman -S intel-ucode
+        pacman -S intel-ucode --noconfirm
         ;;
     "amd")
-        pacman -S amd-ucode
+        pacman -S amd-ucode --noconfirm
         ;;
     "none")
         break
@@ -93,7 +96,7 @@ do
         ;;
     esac
 done
-pacman -S grub efibootmgr
+pacman -S grub efibootmgr --noconfirm
 mkdir /boot/efi
 mount ${drive_name}1 /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
@@ -102,7 +105,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Add default user
 read -p "Adding default user, enter username: " user_name
 useradd -m -G wheel -s /usr/bin/zsh $user_name
-printf "Set user password..."
+printf "Set user password...\n"
 passwd $user_name
 
 # Install yay package manager
@@ -124,13 +127,13 @@ do
     read graphics_type
     case $graphics_type in
     "intel")
-        yay -S xf86-video-intel
+        yay -S xf86-video-intel --noconfirm
         ;;
     "amd")
-        yay -S xf86-video-amdgpu
+        yay -S xf86-video-amdgpu --noconfirm
         ;;
     "nvidia")
-        yay -S nvidia
+        yay -S nvidia --noconfirm
         ;;
     *)
         printf "Invalid selection."
@@ -140,11 +143,11 @@ do
 done
 
 # Install user software
-yay -S keepassxc visual-studio-code-bin google-chrome dropbox
-yay -S vim-lightline-git vim-rainbow-parentheses-improved
+yay -S keepassxc visual-studio-code-bin google-chrome dropbox --noconfirm
+yay -S vim-lightline-git vim-rainbow-parentheses-improved --noconfirm
 
 # Install i3 and related software
-yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet
+yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet --noconfirm
 printf "exec i3" >> /etc/X11/xinit/xinitrc
 
 # Download post install script

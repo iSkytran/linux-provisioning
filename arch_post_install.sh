@@ -29,7 +29,7 @@ printf "Generating ssh files..."
 ssh-keygen -t rsa -b 4096
 
 # Final message
-printf ("Restart the computer to finish. Run nmtui to connect to internet. "
-    "Sign into Google Chrome, VS Code, and Dropbox to sync preferences. "
-    "Copy KeePass key file to computer and copy contents of public ssh key to GitHub."
-    "Delete /root/arch_install.sh and ~/arch_post_install.")
+printf "Restart the computer to finish. Run nmtui to connect to internet. \
+Sign into Google Chrome, VS Code, and Dropbox to sync preferences. \
+Copy KeePass key file to computer and copy contents of public ssh key to GitHub.\
+Delete /root/arch_install.sh and ~/arch_post_install."
