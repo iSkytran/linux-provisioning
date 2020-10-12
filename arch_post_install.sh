@@ -92,4 +92,5 @@ ssh-keygen -t rsa -b 4096
 # Final message
 printf "Restart the computer to finish. Run nmtui to connect to internet. \
 Sign into Google Chrome, VS Code, and Dropbox to sync preferences. \
-Copy KeePass key file to computer and copy contents of public ssh key to GitHub."
+Copy KeePass key file to computer and copy contents of public ssh key to GitHub.\
+arch_post_install.sh can now be removed."

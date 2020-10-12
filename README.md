@@ -11,6 +11,13 @@ curl -Lo ~/arch_install.sh https://git.io/JTkbw
 sh arch_install.sh
 ```
 
+After rebooting, run
+
+```shell
+sudo arch_post_install.sh
+rm arch_post_install.sh
+```
+
 ## Ubuntu Post Install Script Usage
 
 ```shell
