@@ -36,9 +36,15 @@ swapon ${drive_name}2
 mount ${drive_name}1 /mnt/efi
 pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
 
+# Create part 2 of the install
+cat <<
+
 # Generate fstab and enter mounted disk as root
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
+
+# Part 2 of installation
+cat <<EOF > /mnt/root/arch_install_2.sh
+#!/bin/bash
 
 # Set time zone
 read -p "Enter the time zone (default: America/New_York): " time_zone
@@ -157,3 +163,16 @@ chmod a+x /home/${user_name}/arch_post_install.sh
 # Switch to default user
 printf "Switching to default user..."
 su -c /home/${user_name}/arch_post_install.sh $user_name
+
+# Clean up part 3
+rm /home/${user_name}/arch_post_install.sh
+
+# End part 2 of install
+exit
+EOF
+
+# Change root
+arch-chroot /mnt /mnt/root/arch_install_2.sh
+
+# Clean up part 2
+rm /mnt/root/arch_install_2.sh
