@@ -7,7 +7,7 @@ ln -sf /usr/share/zoneinfo/${time_zone} /etc/localtime
 hwclock --systohc
 
 # Setup locale
-sed '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
+sed -i '/en_US.UTF-8 UTF-8/s/^#//g' /etc/locale.gen
 locale-gen
 printf "LANG=en_US.UTF-8" >> /etc/locale.conf
 
@@ -55,7 +55,7 @@ printf "Set user password...\n"
 passwd $user_name
 
 # Allow sudo for group wheel
-sed '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
+sed -i '/%wheel ALL=(ALL) ALL/s/^#//g' /etc/sudoers
 
 # Download post install script
 curl -Lo /home/${user_name}/arch_post_install.sh https://raw.githubusercontent.com/iSkytran/linux-install-scripts/main/arch_post_install.sh

@@ -25,7 +25,7 @@ cd yay
 makepkg -si
 cd ..
 rm -r yay
-sed '/Color/s/^#//g' /etc/pacman.conf
+sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Upgrade system to make sure everything is up to date
 yay -Syu
