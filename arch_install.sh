@@ -32,7 +32,7 @@ reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 # Install the system and enable swap
 mount ${drive_name}3 /mnt
 swapon ${drive_name}2
-pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose
+pacstrap /mnt base linux linux-firmware base-devel man-db man-pages texinfo grub efibootmgr networkmanager ufw curl git vim zsh tmux openssh python jdk-openjdk docker docker-compose zip unzip tar
 
 # Mount efi partition
 mkdir /mnt/boot/efi

@@ -68,7 +68,6 @@ done
 
 # Install user software
 yay -S keepassxc visual-studio-code-bin google-chrome dropbox --noconfirm
-yay -S vim-lightline-git vim-rainbow-parentheses-improved --noconfirm
 
 # Install i3 and related software
 yay -S xorg-server xorg-xinit xorg-xbacklight i3-gaps dmenu i3lock i3status picom feh terminator ranger rofi vlc pulseaudio-alsa pulsemixer nm-applet --noconfirm
