@@ -11,6 +11,7 @@
       - ssh
       - plugins
       - configure
+      - python
     loop_control:
       loop_var: outer_item
   

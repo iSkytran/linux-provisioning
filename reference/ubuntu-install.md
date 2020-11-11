@@ -155,6 +155,12 @@ ZSH needs to be set a the default shell for it to popup upon login.
 chsh -s $(which zsh)
 ```
 
+After changing the shell, the `pipx ensurepath` might need to be set again if not already in the `.zshrc`.
+
+```sh
+python3 -m pipx ensurepath
+```
+
 ### Install Desktop Software
 
 Some desktop software to install if desired. Copy in relevant files for usage or sign in to relevant software afterwards.
