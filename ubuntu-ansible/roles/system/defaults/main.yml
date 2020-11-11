@@ -1,7 +1,10 @@
 ---
 timezone: "America/New_York"
 packages:
+  - git
   - zsh
+  - python3
+  - python3-pip
   - openjdk-14-jdk
   - zip
   - unzip
