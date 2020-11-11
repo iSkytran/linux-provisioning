@@ -1,5 +1,4 @@
 ---
-timezone: "America/New_York"
 packages:
   - git
   - zsh
