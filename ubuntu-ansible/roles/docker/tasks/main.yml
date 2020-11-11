@@ -2,9 +2,9 @@
 - name: Ensure Docker dependencies are installed
   become: yes
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
-    loop: {{ dependencies }}
+    loop: "{{ dependencies }}"
 
 - name: Add Docker GPG key
   become: yes
@@ -26,6 +26,6 @@
 - name: Install Docker engine
   become: yes
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     update_cache: yes
-    loop: {{ packages }}
+    loop: "{{ packages }}"
