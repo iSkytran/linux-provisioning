@@ -17,3 +17,5 @@
 
 - name: Install vim plugins from .vimrc
   command: vim +'PlugInstall --sync' +qa
+  args:
+    stdin: "\n"
