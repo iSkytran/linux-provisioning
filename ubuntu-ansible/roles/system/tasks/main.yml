@@ -9,5 +9,5 @@
   apt:
     name: "{{ item }}"
     state: latest
-    loop: "{{ packages }}"
+  loop: "{{ packages }}"
   

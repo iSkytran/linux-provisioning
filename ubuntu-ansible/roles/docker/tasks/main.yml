@@ -4,7 +4,7 @@
   apt:
     name: "{{ item }}"
     state: latest
-    loop: "{{ dependencies }}"
+  loop: "{{ dependencies }}"
 
 - name: Add Docker GPG key
   become: yes
@@ -28,4 +28,4 @@
   apt:
     name: "{{ item }}"
     update_cache: yes
-    loop: "{{ packages }}"
+  loop: "{{ packages }}"
