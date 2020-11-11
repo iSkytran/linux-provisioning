@@ -93,6 +93,11 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 Copy in a preexisting `.zshrc` to the home folder and modify it so that the paths are correct if desired.
 
+```sh
+curl -Lo ~/.zshrc  https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.zshrc
+curl -Lo ~/.p10k.zsh https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.p10k.zsh
+```
+
 ### Configure Tmux
 
 Install Oh My Tmux.
@@ -108,6 +113,12 @@ Copy in a preexisting `.tmux.conf.local` to the home folder or run the following
 cp .tmux/.tmux.conf.local .
 ```
 
+OR
+
+```sh
+curl -Lo ~/.tmux.conf.local https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.tmux.conf.local
+```
+
 ### Configure Vim
 
 Set Vim as default editor and install Vim-Plug
@@ -120,6 +131,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 Copy in a preexisting `.vimrc` to the home folder and run the following command for plugins if desired.
 
 ```sh
+curl -Lo ~/.vimrc https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.vimrc
 vim +'PlugInstall --sync' +qa
 ```
 
