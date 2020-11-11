@@ -1,19 +1,53 @@
 ---
-- name: Install oh my zsh
-  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+- name: Check if oh my zsh folder exists
+  stat:
+    path: ~/.oh-my-zsh
+  register: zsh_result
 
-- name: Install zsh plugins
-  command: "{{ item }}"
-  loop:
-    - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10kt
+- name: Download oh my zsh
+  get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: ~/install.sh
+  when: not zsh_result.stat.exists
 
-- name: Install oh my tmux
-  command: "{{ item }}"
-  loop:
-    - git clone https://github.com/gpakosz/.tmux.git
-    - ln -s -f .tmux/.tmux.conf
+- name: Run oh my zsh install script
+  shell: ~/install.sh --unattended
+  when: not zsh_result.stat.exists
 
-- name: Install vim-plug
-  command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+- name: Remove oh my zsh install script
+  file:
+    path: ~/install.sh
+    state: 'absent'
+  when: not zsh_result.stat.exists
+
+- name: Download zsh plugins
+  git:
+    repo: "{{ item.0 }}"
+    dest: ~/.oh-my-zsh/custom{{ item.1 }}
+    depth: '1'
+  with_together:
+    - "{{ zsh_plugins }}"
+    - "{{ zsh_paths }}"
+
+- name: Download oh my tmux
+  git:
+    repo: "https://github.com/gpakosz/.tmux.git"
+    dest: ~/.tmux
+    depth: '1'
+
+- name: Symbolic link oh my tmux
+  file:
+    src: ~/.tmux/.tmux.conf
+    path: ~/.tmux.conf
+    state: 'link'
+    force: yes
+
+- name: Create vim-plug directory
+  file:
+    path: ~/.vim/autoload
+    state: 'directory'
+
+- name: Download vim-plug
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: ~/.vim/autoload/plug.vim

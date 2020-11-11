@@ -5,12 +5,14 @@
   tasks:
   - name: Basic provisioning
     include_role:
-      name: "{{ item }}"
+      name: "{{ outer_item }}"
     loop:
       - system
       - ssh
       - plugins
       - configure
+    loop_control:
+      loop_var: outer_item
   
   - name: Provision with Docker
     include_role:
