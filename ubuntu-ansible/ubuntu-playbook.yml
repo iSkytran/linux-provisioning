@@ -1,6 +1,6 @@
 ---
 - name: Provision Ubuntu dev environment
-  hosts: localhost
+  hosts: all
   connection: local
   tasks:
   - name: Basic provisioning
