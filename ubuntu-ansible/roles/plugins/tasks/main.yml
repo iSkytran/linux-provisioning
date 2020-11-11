@@ -1,6 +1,6 @@
 ---
 - name: Install oh my zsh
-  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 - name: Install zsh plugins
   command: "{{ item }}"

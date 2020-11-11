@@ -2,9 +2,17 @@
 - name: Provision Ubuntu dev environment
   hosts: localhost
   connection: local
-  roles:
-    - system
-    - ssh
-    - docker
-    - plugins
-    - configure
+  tasks:
+  - name: Basic provisioning
+    include_role:
+      name: "{{ item }}"
+    loop:
+      - system
+      - ssh
+      - plugins
+      - configure
+  
+  - name: Provision with Docker
+    include_role:
+      name: docker
+    when: "{{ system }} != 'wsl'"

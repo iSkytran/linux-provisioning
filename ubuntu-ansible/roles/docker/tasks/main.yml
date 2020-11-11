@@ -29,3 +29,6 @@
     name: "{{ item }}"
     update_cache: yes
   loop: "{{ packages }}"
+
+- name: Install Docker-Compose through pipx
+  command: pipx install docker-compose
