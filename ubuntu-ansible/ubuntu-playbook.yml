@@ -15,4 +15,4 @@
   - name: Provision with Docker
     include_role:
       name: docker
-    when: "{{ system }} != 'wsl'"
+    when: "system != 'wsl'"
