@@ -6,6 +6,7 @@
     update_cache: yes
 
 - name: Install packages
+  become: yes
   apt:
     name: "{{ item }}"
     state: latest
