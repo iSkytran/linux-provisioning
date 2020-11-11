@@ -5,8 +5,8 @@
     upgrade: 'yes'
     update_cache: yes
 
-- name: Set timezone	
-  become: yes	
+- name: Set timezone
+  become: yes
   command: timedatectl set-timezone {{ timezone }}
   when: "system != 'wsl'"
 
