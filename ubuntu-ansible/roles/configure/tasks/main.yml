@@ -19,3 +19,14 @@
   command: vim +'PlugInstall --sync' +qa
   args:
     stdin: "\n"
+
+- name: Get username
+  become: no
+  local_action: command whoami
+  register: username_result
+
+- name: Set zsh as default shell
+  become: yes
+  user:
+    name: "{{ username_result.stdout }}"
+    shell: /usr/bin/zsh

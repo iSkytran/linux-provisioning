@@ -16,6 +16,7 @@
     - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
     - [Configure Tmux](#configure-tmux)
     - [Configure Vim](#configure-vim)
+    - [Set ZSH as Default Shell](#set-zsh-as-default-shell)
     - [Install Desktop Software](#install-desktop-software)
     - [Install Window Manager or Desktop Environment](#install-window-manager-or-desktop-environment)
       - [GNOME](#gnome)
@@ -144,6 +145,14 @@ Copy in a preexisting `.vimrc` to the home folder and run the following command 
 ```sh
 curl -Lo ~/.vimrc https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.vimrc
 vim +'PlugInstall --sync' +qa
+```
+
+### Set ZSH as Default Shell
+
+ZSH needs to be set a the default shell for it to popup upon login.
+
+```sh
+chsh -s $(which zsh)
 ```
 
 ### Install Desktop Software
