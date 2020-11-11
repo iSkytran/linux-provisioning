@@ -23,6 +23,7 @@
     - [Enable Docker](#enable-docker)
     - [Install Yay Package Manager](#install-yay-package-manager)
     - [Install a Graphics Driver](#install-a-graphics-driver)
+    - [Install pipx](#install-pipx)
     - [Generate SSH Files](#generate-ssh-files)
     - [Configure Git](#configure-git)
     - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
@@ -201,6 +202,15 @@ yay -Syu
 ### Install a Graphics Driver
 
 Run `yay -S xf86-video-intel --noconfirm` for Intel drivers. Run `yay -S xf86-video-amdgpu --noconfirm` for AMD drivers. Run `yay -S nvidia --noconfirm` for Nvidia drivers.
+
+### Install pipx
+
+If pipx is desired for Python application isolation, run the following.
+
+```sh
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+```
 
 ### Generate SSH Files
 

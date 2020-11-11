@@ -10,6 +10,7 @@
     - [Set Timezone](#set-timezone)
     - [Connect to the Internet](#connect-to-the-internet)
     - [Install CLI Software](#install-cli-software)
+    - [Install Docker and Docker-Compose](#install-docker-and-docker-compose)
     - [Generate SSH Files](#generate-ssh-files)
     - [Configure Git](#configure-git)
     - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
@@ -52,15 +53,25 @@ nmtui
 
 ### Install CLI Software
 
-Installs Git, Zsh, Python 3, Java, Docker, and Docker Compose.
+Installs Git, Zsh, Python 3, pip, pipx, and Java.
 
 ```sh
 sudo apt install git zsh python3 python3-pip openjdk-14-jdk -y
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo rm get-docker.sh
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+```
+
+### Install Docker and Docker-Compose
+
+Install Docker and Docker-Compose if containers are desired.
+
+```sh
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io
+pipx install docker-compose
 ```
 
 ### Generate SSH Files
