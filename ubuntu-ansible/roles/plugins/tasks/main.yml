@@ -8,6 +8,7 @@
   get_url:
     url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     dest: ~/install.sh
+    mode: 0755
   when: not zsh_result.stat.exists
 
 - name: Run oh my zsh install script
