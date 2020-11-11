@@ -13,7 +13,7 @@
     - [Install Docker and Docker-Compose](#install-docker-and-docker-compose)
     - [Generate SSH Files](#generate-ssh-files)
     - [Configure Git](#configure-git)
-    - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
+    - [Configure Zsh](#configure-zsh)
     - [Configure Tmux](#configure-tmux)
     - [Configure Vim](#configure-vim)
     - [Set ZSH as Default Shell](#set-zsh-as-default-shell)
@@ -92,7 +92,7 @@ git config --global user.name "myname"
 git config --global user.email "myemail"
 ```
 
-### Configure Zsh and Tmux
+### Configure Zsh
 
 Install Oh-My-Zsh, Oh-My-Zsh plugins, Powerlevel10k.
 
