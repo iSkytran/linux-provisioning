@@ -114,7 +114,7 @@ Set Vim as default editor and install Vim-Plug
 
 ```sh
 sudo update-alternatives --config editor
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 Copy in a preexisting `.vimrc` to the home folder and run the following command for plugins if desired.

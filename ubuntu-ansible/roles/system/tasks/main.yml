@@ -1,0 +1,17 @@
+---
+- name: Update and upgrade apt
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Set timezone
+  become: yes
+  command: timedatectl set-timezone {{ timezone }}
+
+- name: Install packages
+  apt:
+    name: {{ item }}
+    state: latest
+    loop: {{ packages }}
+  

@@ -1,0 +1,9 @@
+---
+- name: Check if SSH files exist
+  stat:
+    path: ~/.ssh/id_rsa
+  register: ssh_result
+
+- name: Generate ssh files
+  command: ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ''
+  when: not ssh_result.stat.exists

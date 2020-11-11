@@ -1,0 +1,10 @@
+---
+- name: Provision Ubuntu dev environment
+  hosts: localhost
+  connection: local
+  roles:
+    - system
+    - ssh
+    - docker
+    - plugins
+    - configure

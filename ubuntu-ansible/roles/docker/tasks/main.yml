@@ -1,0 +1,31 @@
+---
+- name: Ensure Docker dependencies are installed
+  become: yes
+  apt:
+    name: {{ item }}
+    state: latest
+    loop: {{ dependencies }}
+
+- name: Add Docker GPG key
+  become: yes
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Get current distribution version
+  become: yes
+  command: lsb_release -sc
+  register: distro_version
+
+- name: Add Docker repository
+  become: yes
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ distro_version.stdout }} stable"
+    state: present
+  
+- name: Install Docker engine
+  become: yes
+  apt:
+    name: {{ item }}
+    update_cache: yes
+    loop: {{ packages }}

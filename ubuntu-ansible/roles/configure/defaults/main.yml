@@ -1,0 +1,8 @@
+---
+git_name: "iSkytran"
+git_email: "rizcielbleu@gmail.com"
+github_dotfiles: 
+  - https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.p10k.zsh
+  - https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.tmux.conf.local
+  - https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.vimrc
+  - https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.zshrc

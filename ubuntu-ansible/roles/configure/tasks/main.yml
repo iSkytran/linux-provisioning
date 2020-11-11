@@ -1,0 +1,19 @@
+---
+- name: Configure git
+  command: git config --global {{ item.0 }} {{ item.1 }}
+  with_together:
+    - [user.name, user.email]
+    - [{{ git_name}}, {{ git_email }}]
+
+- name: Download config files
+  get_url:
+    url: {{ item }}
+    dest: ~
+  loop: {{ github_dotfiles }}
+
+- name: Set vim as default editor
+  become: yes
+  command: update-alternatives --set editor /usr/bin/vim.basic
+
+- name: Install vim plugins from .vimrc
+  command: vim +'PlugInstall --sync' +qa

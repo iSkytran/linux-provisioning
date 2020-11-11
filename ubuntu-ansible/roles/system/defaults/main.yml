@@ -1,0 +1,7 @@
+---
+timezone: "America/New_York"
+packages:
+  - zsh
+  - openjdk-14-jdk
+  - zip
+  - unzip
