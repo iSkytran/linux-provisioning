@@ -1,6 +1,6 @@
 ---
 - name: Make sure pipx is installed
-  command: python3 -m pip --user pipx
+  command: python3 -m pip install --user pipx
 
 - name: Ensure pipx is in PATH
   command: python3 -m pipx ensurepath
