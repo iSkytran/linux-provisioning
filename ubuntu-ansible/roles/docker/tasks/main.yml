@@ -31,4 +31,4 @@
   loop: "{{ packages }}"
 
 - name: Install Docker-Compose through pipx
-  command: pipx install docker-compose
+  command: python3 -m pipx install docker-compose
