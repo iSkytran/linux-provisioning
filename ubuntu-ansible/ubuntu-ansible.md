@@ -9,7 +9,7 @@ curl -sSL "https://raw.githubusercontent.com/iSkytran/linux-provisioning/main/ub
 For the PATH to update, logout and logback into the shell. The Ansible playbook can now be run.
 
 ```sh
-cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml --ask-become-pass
+cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=full" --ask-become-pass
 ```
 
 Use the `wsl` switch if running in wsl.
