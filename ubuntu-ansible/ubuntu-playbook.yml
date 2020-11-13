@@ -8,7 +8,7 @@
       name: "{{ outer_item }}"
     loop:
       - system
-      - ssh
+      - internet
       - plugins
       - configure
       - python
@@ -18,4 +18,4 @@
   - name: Provision with Docker
     include_role:
       name: docker
-    when: "system != 'wsl'"
+    when: "system == 'full'"

@@ -8,10 +8,12 @@
   - [Post Install](#post-install)
     - [Check for Updates](#check-for-updates)
     - [Set Timezone](#set-timezone)
+    - [Install Network Manager](#install-network-manager)
     - [Connect to the Internet](#connect-to-the-internet)
     - [Install CLI Software](#install-cli-software)
     - [Install Docker and Docker-Compose](#install-docker-and-docker-compose)
     - [Generate SSH Files](#generate-ssh-files)
+    - [Configure UFW](#configure-ufw)
     - [Configure Git](#configure-git)
     - [Configure Zsh](#configure-zsh)
     - [Configure Tmux](#configure-tmux)
@@ -46,6 +48,15 @@ Set the timezone to New York. Other timezones can be found through `timedatectl 
 sudo timedatectl set-timezone "America/New_York"
 ```
 
+### Install Network Manager
+
+Before being able to use wifi, Network Manager must be installed, enabled, and started. Ethernet can be disconnected after this.
+
+```sh
+sudo apt install network-manager
+systemctl enable --now NetworkManager.service
+```
+
 ### Connect to the Internet
 
 ```sh
@@ -57,7 +68,7 @@ nmtui
 Installs Git, Zsh, Python 3, pip, pipx, and Java.
 
 ```sh
-sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-14-jdk -y
+sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-14-jdk ufw -y
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 ```
@@ -81,6 +92,15 @@ Once generated, the contents of `~/.ssh/id_rsa.pub` can be copied to GitHub for 
 
 ```sh
 ssh-keygen -t rsa -b 4096
+```
+
+### Configure UFW
+
+UFW is used for host-based firewalling.
+
+```sh
+sudo ufw limit ssh
+sudo ufw enable
 ```
 
 ### Configure Git

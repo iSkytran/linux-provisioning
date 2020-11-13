@@ -18,7 +18,7 @@
 - name: Remove oh my zsh install script
   file:
     path: ~/install.sh
-    state: 'absent'
+    state: absent
   when: not zsh_result.stat.exists
 
 - name: Download zsh plugins

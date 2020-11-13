@@ -9,3 +9,6 @@ packages:
   - openjdk-14-jdk
   - zip
   - unzip
+full_packages:
+  - network-manager
+  - ufw

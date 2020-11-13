@@ -171,8 +171,6 @@ Sets up a firewall if ufw is installed allowing incoming connections from local 
 
 ```sh
 systemctl enable --now ufw.service
-sudo ufw default deny
-sudo ufw allow from 192.168.0.0/24
 sudo ufw limit ssh
 sudo ufw enable
 ```
