@@ -13,14 +13,14 @@
     name: NetworkManager.service
     state: started
     enabled: yes
-  when: "system == 'full'"
+  when: "(system == 'full') or (system == 'vm')"
 
 - name: Set UFW to allow SSH
   become: yes
   command: ufw limit ssh
-  when: "system == 'full'"
+  when: "(system == 'full') or (system == 'vm')"
 
 - name: Enable UFW
   become: yes
   command: ufw enable
-  when: "system == 'full'"
+  when: "(system == 'full') or (system == 'vm')"

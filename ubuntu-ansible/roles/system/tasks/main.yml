@@ -8,7 +8,7 @@
 - name: Set timezone
   become: yes
   command: timedatectl set-timezone {{ timezone }}
-  when: "system == 'full'"
+  when: "(system == 'full') or (system == 'vm')"
 
 - name: Install packages
   become: yes
@@ -23,4 +23,4 @@
     name: "{{ item }}"
     state: latest
   loop: "{{ full_packages }}"
-  when: "system =='full'"
+  when: "(system == 'full') or (system == 'vm')"
