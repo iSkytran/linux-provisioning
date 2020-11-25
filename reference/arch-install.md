@@ -29,6 +29,7 @@
     - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
     - [Configure Tmux](#configure-tmux)
     - [Configure Vim](#configure-vim)
+    - [Install NVM and Node](#install-nvm-and-node)
     - [Install Desktop Software](#install-desktop-software)
     - [Install Window Manager or Desktop Environment](#install-window-manager-or-desktop-environment)
       - [GNOME](#gnome)
@@ -279,6 +280,15 @@ Copy in a preexisting `.vimrc` to the home folder and run the following command 
 ```sh
 curl -Lo ~/.vimrc https://raw.githubusercontent.com/iSkytran/dotfiles/main/Linux/.vimrc
 vim +'PlugInstall --sync' +qa
+```
+
+### Install NVM and Node
+
+If desired, install Node Version Manager and Node.js.
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | zsh
+source ~/.nvm/nvm.sh && nvm install node
 ```
 
 ### Install Desktop Software

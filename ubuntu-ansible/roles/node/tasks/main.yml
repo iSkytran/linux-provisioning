@@ -1,0 +1,17 @@
+---
+- name: Check if nvm is installed
+  stat:
+    path: ~/.nvm
+  register: nvm_result
+
+- name: nvm
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | zsh
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+  when: not nvm_result.stat.exists
+
+- name: Install node
+  shell: source ~/.nvm/nvm.sh && nvm install node
+  args:
+    executable: /usr/bin/zsh
+  when: not nvm_result.stat.exists 

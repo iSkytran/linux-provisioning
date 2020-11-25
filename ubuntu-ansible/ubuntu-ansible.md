@@ -12,7 +12,7 @@ For the PATH to update, logout and logback into the shell. The Ansible playbook 
 cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=full" --ask-become-pass
 ```
 
-Use the `vm` switch if running in a virtual machine.
+Use the `vm` switch if running in a virtual machine or if docker is not desired.
 
 ```sh
 cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=vm" --ask-become-pass

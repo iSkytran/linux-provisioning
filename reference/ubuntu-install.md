@@ -19,6 +19,7 @@
     - [Configure Tmux](#configure-tmux)
     - [Configure Vim](#configure-vim)
     - [Set ZSH as Default Shell](#set-zsh-as-default-shell)
+    - [Install NVM and Node](#install-nvm-and-node)
     - [Install Desktop Software](#install-desktop-software)
     - [Install Window Manager or Desktop Environment](#install-window-manager-or-desktop-environment)
       - [GNOME](#gnome)
@@ -179,6 +180,15 @@ After changing the shell, the `pipx ensurepath` might need to be set again if no
 
 ```sh
 python3 -m pipx ensurepath
+```
+
+### Install NVM and Node
+
+If desired, install Node Version Manager and Node.js.
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | zsh
+source ~/.nvm/nvm.sh && nvm install node
 ```
 
 ### Install Desktop Software

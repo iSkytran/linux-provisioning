@@ -5,6 +5,7 @@ packages:
   - zsh
   - tmux
   - python3
+  - python3-venv
   - python3-pip
   - openjdk-14-jdk
   - zip

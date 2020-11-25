@@ -12,6 +12,7 @@
       - plugins
       - configure
       - python
+      - node
     loop_control:
       loop_var: outer_item
   
