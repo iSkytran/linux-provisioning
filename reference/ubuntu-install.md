@@ -69,7 +69,7 @@ nmtui
 Installs Git, Zsh, Python 3, pip, pipx, and Java.
 
 ```sh
-sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-14-jdk ufw -y
+sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-11-jdk ufw -y
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 ```
