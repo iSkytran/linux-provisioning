@@ -6,7 +6,7 @@ Use the bootstrap script to install Ansible and it's dependencies.
 curl -sSL "https://raw.githubusercontent.com/iSkytran/linux-provisioning/main/ubuntu-ansible/ubuntu-bootstrap.sh" | bash -s
 ```
 
-For the PATH to update, logout and logback into the shell. The Ansible playbook can now be run.
+The Ansible playbook can now be run.
 
 ```sh
 cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=full" --ask-become-pass
