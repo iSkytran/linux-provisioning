@@ -1,6 +1,7 @@
 ---
 timezone: "America/New_York"
 packages:
+  - vim
   - git
   - zsh
   - tmux
