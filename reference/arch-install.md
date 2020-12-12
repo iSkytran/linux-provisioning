@@ -24,6 +24,7 @@
     - [Install Yay Package Manager](#install-yay-package-manager)
     - [Install a Graphics Driver](#install-a-graphics-driver)
     - [Install pipx](#install-pipx)
+    - [Add User to Docker Group](#add-user-to-docker-group)
     - [Generate SSH Files](#generate-ssh-files)
     - [Configure Git](#configure-git)
     - [Configure Zsh and Tmux](#configure-zsh-and-tmux)
@@ -209,6 +210,15 @@ If pipx is desired for Python application isolation, run the following.
 ```sh
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
+```
+
+### Add User to Docker Group
+
+Adds the current user to the Docker group.
+
+```sh
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
 
 ### Generate SSH Files

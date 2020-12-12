@@ -29,3 +29,9 @@ To update the playbook, just pull the latest updates.
 ```sh
 cd ~/linux-provisioning && git pull && cd ~
 ```
+
+The playbook can be removed after use.
+
+```sh
+cd ~ && rm -rf linux-provisioning
+```
