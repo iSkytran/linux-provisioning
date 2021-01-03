@@ -1,4 +1,23 @@
 ---
 - name: Install minikube
+  become: yes
   apt:
     deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+
+- name: Add kubectl GPG key
+  become: yes
+  apt_key:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    state: present
+
+- name: Add kubectl repository
+  become: yes
+  apt_repository:
+    repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+    state: present
+
+- name: Install kubectl
+  become: yes
+  apt:
+    name: kubectl
+    update_cache: yes
