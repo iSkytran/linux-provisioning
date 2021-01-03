@@ -12,16 +12,22 @@ The Ansible playbook can now be run.
 cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=full" --ask-become-pass
 ```
 
-Use the `vm` switch if running in a virtual machine or if docker is not desired.
-
-```sh
-cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=vm" --ask-become-pass
-```
-
 Use the `wsl` switch if running in wsl.
 
 ```sh
 cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=wsl" --ask-become-pass
+```
+
+Use the `docker` switch for Docker.
+
+```sh
+cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=docker" --ask-become-pass
+```
+
+Use the `minikube` switch for minikube.
+
+```sh
+cd ~/linux-provisioning/ubuntu-ansible && ansible-playbook ubuntu-playbook.yml -e "system=minikube" --ask-become-pass
 ```
 
 To update the playbook, just pull the latest updates.

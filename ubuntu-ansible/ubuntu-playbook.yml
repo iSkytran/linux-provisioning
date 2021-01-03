@@ -19,4 +19,9 @@
   - name: Provision with Docker
     include_role:
       name: docker
-    when: "system == 'full'"
+    when: "(system == 'docker') or (system == 'minikube')"
+
+  - name: Provision with minikube
+    include_role:
+      name: minikube
+    when: "system == 'minikube'"
