@@ -14,6 +14,7 @@
     dest: ~/.ssh
 
 - name: Enable and start Network Manager
+  become: yes
   systemd:
     name: NetworkManager.service
     state: started
@@ -29,3 +30,12 @@
   become: yes
   command: ufw enable
   when: "system != 'wsl'"
+
+- name: Enable and start fail2ban
+  become: yes
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes
+  when: "system != 'wsl'"
+

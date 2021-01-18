@@ -13,7 +13,7 @@
     - [Install CLI Software](#install-cli-software)
     - [Install Docker and Docker-Compose](#install-docker-and-docker-compose)
     - [Generate SSH Files](#generate-ssh-files)
-    - [Configure UFW](#configure-ufw)
+    - [Configure UFW and fail2ban](#configure-ufw-and-fail2ban)
     - [Configure Git](#configure-git)
     - [Configure Zsh](#configure-zsh)
     - [Configure Tmux](#configure-tmux)
@@ -69,7 +69,7 @@ nmtui
 Installs Git, Zsh, Python 3, pip, pipx, and Java.
 
 ```sh
-sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-11-jdk ufw -y
+sudo apt install git zsh tmux python3 python3-venv python3-pip openjdk-11-jdk ufw fail2ban -y
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 ```
@@ -109,13 +109,14 @@ Once generated, the contents of `~/.ssh/id_rsa.pub` can be copied to GitHub for 
 ssh-keygen -t rsa -b 4096
 ```
 
-### Configure UFW
+### Configure UFW and fail2ban
 
-UFW is used for host-based firewalling.
+UFW is used for host-based firewalling. fail2ban blocks repeated bruteforcing attacks.
 
 ```sh
 sudo ufw limit ssh
 sudo ufw enable
+sudo systemctl enable --now fail2ban
 ```
 
 ### Configure Git

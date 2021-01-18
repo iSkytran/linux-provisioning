@@ -14,3 +14,5 @@ packages:
 full_packages:
   - network-manager
   - ufw
+  - fail2ban
+
