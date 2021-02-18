@@ -2,8 +2,8 @@
 zsh_plugins:
   - "https://github.com/zsh-users/zsh-autosuggestions.git"
   - "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-  - "https://github.com/romkatv/powerlevel10k.git"
+  - "https://github.com/sindresorhus/pure.git"
 zsh_paths:
-  - /plugins/zsh-autosuggestions
-  - /plugins/zsh-syntax-highlighting 
-  - /themes/powerlevel10k
+  - ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  - ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting 
+  - ~/.oh-my-zsh/pure

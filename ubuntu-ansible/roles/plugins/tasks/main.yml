@@ -24,7 +24,7 @@
 - name: Download zsh plugins
   git:
     repo: "{{ item.0 }}"
-    dest: ~/.oh-my-zsh/custom{{ item.1 }}
+    dest: "{{ item.1 }}"
     depth: '1'
   with_together:
     - "{{ zsh_plugins }}"
