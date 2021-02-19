@@ -5,14 +5,18 @@
     dest: ~/
   loop: "{{ github_dotfiles }}"
 
+- name: Set git autocrlf for WSL
+  command: git config --global core.autocrlf input
+  when: "system == 'wsl'"
+
 - name: Set vim as default editor
   become: yes
   command: update-alternatives --set editor /usr/bin/vim.basic
 
 - name: Install vim plugins from .vimrc
   command: vim +'PlugInstall --sync' +qa
-  args:
-    stdin: "\n"
+  args:"
+    stdin: "\n
 
 - name: Get username
   become: no
