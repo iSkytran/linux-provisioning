@@ -15,8 +15,8 @@
 
 - name: Install vim plugins from .vimrc
   command: vim +'PlugInstall --sync' +qa
-  args:"
-    stdin: "\n
+  args:
+    stdin: "\n"
 
 - name: Get username
   become: no
